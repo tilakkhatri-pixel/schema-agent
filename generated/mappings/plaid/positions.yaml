@@ -1,0 +1,25 @@
+# =============================================================================
+# AUTO-GENERATED — DO NOT EDIT MANUALLY
+# Partner : plaid
+# Entity  : positions
+# =============================================================================
+
+partner: plaid
+entity: positions
+
+field_mappings:
+  - partner_field: "id"
+    golden_field:  "id"
+    data_type:     "string"
+  - partner_field: "created_at"
+    golden_field:  "as_of_date"
+    data_type:     "datetime"
+
+
+required_golden_fields_missing:
+  - account_id
+  - ticker
+  - cusip
+  - quantity
+  - market_value
+  - cost_basis
