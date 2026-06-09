@@ -1,0 +1,27 @@
+# =============================================================================
+# AUTO-GENERATED — DO NOT EDIT MANUALLY
+# Partner : plaid
+# Entity  : transactions
+# =============================================================================
+
+partner: plaid
+entity: transactions
+
+field_mappings:
+  - partner_field: "id"
+    golden_field:  "id"
+    data_type:     "string"
+  - partner_field: "transactions_name"
+    golden_field:  "description"
+    data_type:     "string"
+  - partner_field: "created_at"
+    golden_field:  "created_at"
+    data_type:     "datetime"
+
+
+required_golden_fields_missing:
+  - account_id
+  - amount
+  - currency
+  - date
+  - type
