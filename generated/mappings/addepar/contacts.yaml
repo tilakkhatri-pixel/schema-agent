@@ -1,0 +1,25 @@
+# =============================================================================
+# AUTO-GENERATED — DO NOT EDIT MANUALLY
+# Partner : addepar
+# Entity  : contacts
+# =============================================================================
+
+partner: addepar
+entity: contacts
+
+field_mappings:
+  - partner_field: "id"
+    golden_field:  "id"
+    data_type:     "string"
+  - partner_field: "created_at"
+    golden_field:  "created_at"
+    data_type:     "timestamp"
+
+
+required_golden_fields_missing:
+  - first_name
+  - last_name
+  - email
+  - phone
+  - type
+  - updated_at
