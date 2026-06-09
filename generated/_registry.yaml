@@ -1,0 +1,48 @@
+partners:
+- name: addepar
+  display_name: Addepar
+  status: not-generated
+  auth_type: api_key_header
+  pagination_type: async_job
+  entities:
+  - accounts
+  - transactions
+  - positions
+- name: orion
+  display_name: Orion
+  status: not-generated
+  auth_type: oauth2_auth_code
+  pagination_type: cursor
+  entities:
+  - accounts
+  - transactions
+- name: wealthbox
+  display_name: Wealthbox
+  status: not-generated
+  auth_type: oauth2_auth_code
+  pagination_type: page_number
+  entities:
+  - accounts
+  - contacts
+- name: emoney
+  display_name: eMoney
+  status: not-generated
+  auth_type: oauth2_auth_code
+  pagination_type: page_number
+  entities:
+  - accounts
+- name: black-diamond
+  display_name: Black Diamond
+  status: not-generated
+  auth_type: oauth2_client_creds
+  pagination_type: page_number
+  entities:
+  - accounts
+- name: plaid
+  status: generated
+  spec_version: unknown
+  last_generated_at: '2026-06-09T08:01:40.702525+00:00'
+  agent_version: 0.1.0
+  output_branch: ai-generated/plaid-003b317b
+  pr_number: null
+  run_id: 003b317b
