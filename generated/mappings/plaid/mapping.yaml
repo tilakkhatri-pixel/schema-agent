@@ -1,0 +1,153 @@
+# =============================================================================
+# AUTO-GENERATED — DO NOT EDIT MANUALLY
+# Partner : plaid
+# =============================================================================
+
+partner: plaid
+schema_version: "1.0.0"
+base_url: "https://production.plaid.com"
+
+auth:
+  type: api_key_header
+  header_name: "PLAID-SECRET"
+
+mappings:
+  accounts:
+    source_endpoint: /api/accounts
+    field_map:
+
+    pagination:
+      type: cursor
+      next_cursor_field: next_cursor
+      cursor_param: cursor
+
+    validation:
+
+    deduplication:
+      unique_key: [accounts_id]
+      prefer_latest: true
+
+  transactions:
+    source_endpoint: /api/transactions
+    field_map:
+
+    pagination:
+      type: cursor
+      next_cursor_field: next_cursor
+      cursor_param: cursor
+
+    validation:
+      - field: id
+        rules: ["not_null"]
+      - field: account_id
+        rules: ["not_null"]
+      - field: amount
+        rules: ["not_null"]
+      - field: currency
+        rules: ["not_null"]
+      - field: date
+        rules: ["not_null"]
+      - field: type
+        rules: ["not_null"]
+      - field: description
+        rules: ["not_null"]
+      - field: created_at
+        rules: ["not_null"]
+
+    deduplication:
+      unique_key: [id]
+      prefer_latest: true
+
+  positions:
+    source_endpoint: /api/positions
+    field_map:
+      - source: id
+        target: id
+        transform: "string"
+        required: false
+
+    pagination:
+      type: cursor
+      next_cursor_field: next_cursor
+      cursor_param: cursor
+
+    validation:
+      - field: account_id
+        rules: ["not_null"]
+      - field: ticker
+        rules: ["not_null"]
+      - field: cusip
+        rules: ["not_null"]
+      - field: quantity
+        rules: ["not_null"]
+      - field: market_value
+        rules: ["not_null"]
+      - field: cost_basis
+        rules: ["not_null"]
+      - field: as_of_date
+        rules: ["not_null"]
+
+    deduplication:
+      unique_key: [account_id]
+      prefer_latest: true
+
+  contacts:
+    source_endpoint: /api/contacts
+    field_map:
+      - source: id
+        target: id
+        transform: "string"
+        required: false
+      - source: contacts_name
+        target: first_name
+        transform: "string"
+        required: false
+      - source: created_at
+        target: created_at
+        transform: "timestamp"
+        required: false
+
+    pagination:
+      type: cursor
+      next_cursor_field: next_cursor
+      cursor_param: cursor
+
+    validation:
+      - field: last_name
+        rules: ["not_null"]
+      - field: email
+        rules: ["not_null"]
+      - field: phone
+        rules: ["not_null"]
+      - field: type
+        rules: ["not_null"]
+      - field: updated_at
+        rules: ["not_null"]
+
+    deduplication:
+      unique_key: [last_name]
+      prefer_latest: true
+
+
+error_handling:
+  missing_required_field: skip_record
+  transformation_error: log_and_skip
+  validation_error: log_and_skip
+  api_error:
+    rate_limit: retry_with_backoff
+    auth_failure: fail_pipeline
+    not_found: skip_record
+
+ingestion_schedule:
+  accounts:
+    frequency: daily
+    fetch_strategy: full_refresh
+  transactions:
+    frequency: daily
+    fetch_strategy: full_refresh
+  positions:
+    frequency: daily
+    fetch_strategy: full_refresh
+  contacts:
+    frequency: daily
+    fetch_strategy: full_refresh
