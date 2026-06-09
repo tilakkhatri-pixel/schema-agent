@@ -1,0 +1,29 @@
+# =============================================================================
+# AUTO-GENERATED — DO NOT EDIT MANUALLY
+# Partner : plaid
+# Entity  : contacts
+# =============================================================================
+
+partner: plaid
+entity: contacts
+
+field_mappings:
+  - partner_field: "id"
+    golden_field:  "id"
+    data_type:     "string"
+  - partner_field: "contacts_name"
+    golden_field:  "first_name"
+    data_type:     "string"
+  - partner_field: "contacts_name"
+    golden_field:  "last_name"
+    data_type:     "string"
+  - partner_field: "created_at"
+    golden_field:  "created_at"
+    data_type:     "timestamp"
+
+
+required_golden_fields_missing:
+  - email
+  - phone
+  - type
+  - updated_at
